@@ -1,14 +1,8 @@
 <?php
+// Wrapper to expose the existing cashier controller at the expected API path
+// so frontend code (`js/cashier.js`) can POST to `api/cashier_controller.php`.
 
-require_once __DIR__.'/../_init.php';
+// If the real controller lives in `condition/cashier_controller.php`, include it.
+require_once __DIR__ . '/../condition/cashier_controller.php';
 
-if (post('action') === 'proccess_order') {
-    $order = Order::create();
-
-    foreach ($_POST['cart_item'] as $item) {
-        OrderItem::add($order->id, $item);
-    }
-
-    flashMessage('transaction', 'Successfull transaction.', FLASH_SUCCESS);
-    redirect('../index.php');    
-}
+// The included file handles the request and will exit appropriately.

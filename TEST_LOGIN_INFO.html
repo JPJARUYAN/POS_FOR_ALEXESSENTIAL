@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Admin Login for Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .info {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .code {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Test Account</h1>
+        <p>Use these credentials to login to the POS System:</p>
+        
+        <div class="info">
+            <strong>Admin Account:</strong>
+            <div class="code">Email: admin@gmail.com</div>
+            <div class="code">Password: adminadmin</div>
+        </div>
+
+        <div class="info">
+            <strong>Cashier Account:</strong>
+            <div class="code">Email: cashier@email.com</div>
+            <div class="code">Password: cashiercashier</div>
+        </div>
+
+        <h2>Steps to view Expense & Cost Report:</h2>
+        <ol>
+            <li>Go to <a href="login.php">Login Page</a></li>
+            <li>Enter admin@gmail.com and adminadmin</li>
+            <li>Click Submit</li>
+            <li>After logging in, click "Expenses" from the navbar</li>
+            <li>Or navigate directly to: <a href="admin_expenses.php">admin_expenses.php</a></li>
+        </ol>
+
+        <h2>Quick Links:</h2>
+        <ul>
+            <li><a href="login.php" style="color: #667eea; text-decoration: none;">→ Login Page</a></li>
+            <li><a href="admin_home.php" style="color: #667eea; text-decoration: none;">→ Admin Dashboard</a></li>
+            <li><a href="admin_expenses.php" style="color: #667eea; text-decoration: none;">→ Expense Report (requires login)</a></li>
+        </ul>
+    </div>
+</body>
+</html>

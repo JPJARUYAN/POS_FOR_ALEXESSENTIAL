@@ -1,9 +1,9 @@
 .dataTable-wrapper.no-header .dataTable-container {
-	border-top: 1px solid #d9d9d9;
+	border-top: 1px solid var(--border-color);
 }
 
 .dataTable-wrapper.no-footer .dataTable-container {
-	border-bottom: 1px solid #d9d9d9;
+	border-bottom: 1px solid var(--border-color);
 }
 
 .dataTable-top,
@@ -55,17 +55,19 @@
 	padding: 6px 12px;
 	position: relative;
 	text-decoration: none;
-	color: #333;
+	color: var(--text-body);
 }
 
 .dataTable-pagination a:hover {
-	background-color: #d9d9d9;
+	background-color: var(--btn-hover-bg);
+	color: var(--primary);
 }
 
 .dataTable-pagination .active a,
 .dataTable-pagination .active a:focus,
 .dataTable-pagination .active a:hover {
-	background-color: #d9d9d9;
+	background-color: var(--primary);
+	color: #ffffff;
 	cursor: default;
 }
 
@@ -108,13 +110,15 @@
 .dataTable-table > thead > tr > th {
 	vertical-align: bottom;
 	text-align: left;
-	border-bottom: 1px solid #d9d9d9;
+	border-bottom: 1px solid var(--border-color);
+	background: var(--header-bg);
+	color: var(--text-body);
 }
 
 .dataTable-table > tfoot > tr > th {
 	vertical-align: bottom;
 	text-align: left;
-	border-top: 1px solid #d9d9d9;
+	border-top: 1px solid var(--border-color);
 }
 
 .dataTable-table th {
@@ -147,12 +151,12 @@
 }
 
 .dataTable-sorter::before {
-	border-top: 4px solid #000;
+	border-top: 4px solid var(--text-body);
 	bottom: 0px;
 }
 
 .dataTable-sorter::after {
-	border-bottom: 4px solid #000;
+	border-bottom: 4px solid var(--text-body);
 	border-top: 4px solid transparent;
 	top: 0px;
 }

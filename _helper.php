@@ -50,3 +50,37 @@ function displayFlashMessage($name) {
 
     echo formattedFlashMessage($flashMessage);
 }
+
+/**
+ * Calculate the tax for a product at checkout
+ * Takes into account the product's tax settings (rate and taxable status)
+ * 
+ * @param Product $product - The product object
+ * @param float $subtotal - The subtotal amount before tax
+ * @return float - The calculated tax amount
+ */
+function calculateProductTax(Product $product, float $subtotal): float {
+    // If product is not taxable, no tax
+    if (!$product->isTaxable()) {
+        return 0;
+    }
+
+    // Get the effective tax rate
+    $taxRate = $product->getEffectiveTaxRate();
+    
+    // Calculate tax
+    return $subtotal * ($taxRate / 100);
+}
+
+/**
+ * Get the tax rate display text for a product
+ * Shows whether it's using category default or product override
+ */
+function getTaxRateDisplay(Product $product): string {
+    if ($product->tax_rate !== null) {
+        return number_format($product->tax_rate, 2) . '% (Product Override)';
+    }
+    $effectiveRate = $product->getEffectiveTaxRate();
+    return number_format($effectiveRate, 2) . '% (Category Default)';
+}
+?>

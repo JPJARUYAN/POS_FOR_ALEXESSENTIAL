@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600;700;800&display=swap');
 
-body {
-
+/* Theme variables */
+:root {
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
     --teal-500: #14B8A6;
@@ -13,9 +13,9 @@ body {
     --green-300: #86EFAC;
     --green-500: #22C55E;
 
-    --primary: #3B82F6;
-    --primary-lighter: #93C5FD;
-    --primary-darker: #1D4ED8;
+    --primary: #2563eb;
+    --primary-lighter: #60a5fa;
+    --primary-darker: #1d4ed8;
 
     --gray-50:  #F9FAFB;
     --gray-100: #F1F5F9;
@@ -25,22 +25,64 @@ body {
     --gray-500: #6B7280;
     --gray-700: #374151;
 
-    background: var(--gray-100);
+    /* default (dark) */
+    --bg-body: #0b1020;
+    --text-body: #cbd5e1;
+    --text-muted: #9ca3af;
+    --card-bg: #071126;
+    --card-border: #1f2937;
+    --border-color: #1f2937;
+    --input-bg: #0f1724;
+    --input-text: #e6eef8;
+    --input-border: #374151;
+    --btn-bg: #1f2937;
+    --btn-border: #374151;
+    --btn-text: #e2e8f0;
+    --btn-hover-bg: #374151;
+    --header-bg: #0f1724;
+    --sidebar-bg: #071126;
+    --alert-bg: #071126;
+}
+
+:root[data-theme="light"] {
+    --bg-body: #f9fafb;
+    --text-body: #111827;
+    --text-muted: #6b7280;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --border-color: #e5e7eb;
+    --input-bg: #ffffff;
+    --input-text: #111827;
+    --input-border: #d1d5db;
+    --btn-bg: #f3f4f6;
+    --btn-border: #d1d5db;
+    --btn-text: #111827;
+    --btn-hover-bg: #e5e7eb;
+    --header-bg: #ffffff;
+    --sidebar-bg: #f9fafb;
+    --alert-bg: #ffffff;
+}
+
+body {
+    background: var(--bg-body);
     margin: 0;
     font-family: "Open Sans";
     font-size: 14px;
-    color: var(--gray-700);
+    color: var(--text-body);
 }
 
 .card {
-    background-color: white;
-    box-shadow: var(--shadow);
+    background-color: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     margin: auto;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
 }
 
 .card-header {
     padding: 16px;
-    border-bottom: 1px solid var(--gray-400);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-body);
 }
 
 .card-title {
@@ -59,41 +101,46 @@ body {
 
 .form-control input, 
 .form-control select {
-    background-color: #fff;
+    background-color: var(--input-bg);
+    color: var(--input-text);
     margin-top: 4px;
     padding: 8px;
     border-radius: 5px;
-    border: 1px solid #6B7280;
+    border: 1px solid #1f2937;
 }
 
 .form-control input:focus,
-.form-control select:focus, {
+.form-control select:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
 .btn {
     font-weight: 500;
     padding: 8px 16px;
-    background-color: var(--gray-100);
-    border: none;
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border);
     border-radius: 4px;
     cursor: pointer;
+    color: var(--btn-text);
 }
 
 .btn-outlined{
-    background-color: #fff;
-    border: 1px solid var(--gray-400);
-    color: var(--gray-500);
+    background-color: var(--input-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text-body);
 }
 
 .btn-outlined:hover{
-    background-color: var(--gray-200);
+    background-color: #1f2937;
+    border-color: #4b5563;
 }
 
 .btn-primary {
     background-color: var(--primary);
     color: #fff;
+    border: none;
 }
 
 .btn-primary:hover {
@@ -101,21 +148,22 @@ body {
 }
 
 .alert {
-    border: 1px solid var(--gray-400);
-    color: var(--gray-400);
+    border: 1px solid var(--card-border);
+    color: var(--text-body);
     padding: 8px;
     border-radius: 5px;
     margin: 8px 0;
+    background-color: var(--alert-bg);
 }
 
 .alert-error {
-    background-color: var(--red-100);
-    border-color: var(--red-500);
-    color: var(--red-500);
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: #dc2626;
+    color: #fca5a5;
 }
 
 .alert-success {
-    background-color: var(--green-100);
-    border-color: var(--green-500);
-    color: var(--green-500);
+    background-color: rgba(34, 197, 94, 0.1);
+    border-color: #16a34a;
+    color: #86efac;
 }

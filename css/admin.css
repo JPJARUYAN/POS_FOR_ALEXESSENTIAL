@@ -1,26 +1,36 @@
+body {
+    overflow-x: hidden;
+}
+
 header {
-    background-color: #fff;
+    background: var(--header-bg);
     box-shadow: var(--shadow);
     height: 64px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 12px;
     position: sticky;
     top: 0;
-    width: full;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
 }
 
 .title {
     font-size: 1.75em;
     font-weight: 700;
+    color: var(--text-body);
 }
 
-.subtitle{
+.subtitle {
     font-size: 1.5rem;
+    color: var(--text-muted);
 }
 
 hr {
-    color: var(--gray-300);
+    color: var(--border-color);
 }
 
 a {
@@ -32,17 +42,37 @@ aside {
     height: calc(100vh - 64px);
     min-width: 100px;
     max-width: 100px;
-    box-shadow: var(--shadow);
+    box-shadow: inset -1px 0 0 var(--border-color);
+    background: var(--sidebar-bg);
 }
 
 main {
     flex-grow: 1;
     height: calc(100vh - 64px);
     overflow-y: auto;
+    background: var(--bg-body);
+    min-height: calc(100vh - 64px);
 }
 
-.wrapper{
-    padding: 16px;
+.wrapper {
+    padding: 12px;
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .nav-links {
@@ -56,16 +86,21 @@ main {
     flex-direction: column;
     align-items: center;
     font-size: 0.8em;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .nav-links-item:hover {
-    background-color: var(--primary);
-    color: #fff;
-    cursor: pointer;
+    background-color: var(--btn-hover-bg);
+    color: var(--text-body);
+    border-left-color: var(--primary);
 }
 
 .nav-links-item .icon {
     width: 48px;
+    color: inherit;
 }
 
 .category-form {
@@ -81,28 +116,103 @@ main {
 table {
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid var(--gray-300);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
 }
 
 thead {
-    border: 1px solid var(--gray-300);
+    border: 1px solid var(--border-color);
     border-width: 1px 0;
-    background-color: var(--gray-200);
+    background-color: var(--header-bg);
 }
 
 th {
     text-align: left;
-    padding: 8px;
+    padding: 10px;
     font-size: 1.1em;
+    color: var(--text-body);
+    font-weight: 600;
 }
 
 td {
-    background-color: var(--gray-50);
-    border: 1px solid var(--gray-300);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-width: 1px 0;
-    padding: 8px;
+    padding: 10px;
+    color: var(--text-body);
 }
 
-tr:hover td{
-    background-color: var(--gray-100);
+tr:hover td {
+    background-color: var(--btn-hover-bg);
+    color: var(--text-body);
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--btn-text);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--btn-hover-bg);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-darker);
+    border-color: var(--primary-darker);
+}
+
+@media (max-width: 1200px) {
+    aside {
+        min-width: 90px;
+        max-width: 90px;
+    }
+
+    .wrapper {
+        padding: 12px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 56px;
+    }
+
+    aside {
+        min-width: 80px;
+        max-width: 80px;
+        height: auto;
+        position: sticky;
+        top: 56px;
+    }
+
+    main {
+        height: auto;
+    }
+
+    .wrapper {
+        padding: 12px 8px;
+    }
 }

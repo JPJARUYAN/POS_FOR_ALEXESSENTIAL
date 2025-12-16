@@ -6,6 +6,7 @@ class Category
 {
     public $id;
     public $name;
+    public $tax_rate;
 
     private static $cache = null;
 
@@ -13,6 +14,7 @@ class Category
     {
         $this->id = $category['id'];
         $this->name = $category['name'];
+        $this->tax_rate = $category['tax_rate'] ?? 12.00;
     }
 
     public function update() 
@@ -22,10 +24,13 @@ class Category
         $category = self::findByName($this->name);
         if ($category && $category->id !== $this->id) throw new Exception('Name already exists.');
 
-        $stmt = $connection->prepare('UPDATE categories SET name=:name WHERE id=:id');
+        $stmt = $connection->prepare('UPDATE categories SET name=:name, tax_rate=:tax_rate WHERE id=:id');
         $stmt->bindParam('name', $this->name);
+        $stmt->bindParam('tax_rate', $this->tax_rate);
         $stmt->bindParam('id', $this->id);
         $stmt->execute();
+        // Invalidate cache so UI shows updated categories immediately
+        static::$cache = null;
     }
 
     public function delete() {
@@ -34,6 +39,8 @@ class Category
         $stmt = $connection->prepare('DELETE FROM `categories` WHERE id=:id');
         $stmt->bindParam('id', $this->id);
         $stmt->execute();
+        // Clear cached categories so UI reflects deletion
+        static::$cache = null;
     }
 
     public static function all()
@@ -62,6 +69,8 @@ class Category
         $stmt = $connection->prepare('INSERT INTO `categories`(name) VALUES (:name)');
         $stmt->bindParam("name", $name);
         $stmt->execute();
+        // Clear cache so next call to all() includes the new category
+        static::$cache = null;
     }
 
     public static function findByName($name)
